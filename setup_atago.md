@@ -463,3 +463,50 @@ SlackからBotに対して以下のメッセージを送る
 /atago deploylist
 /atago k8s get po
 ```
+
+## atagoコマンド
+
+atagoで実行可能なコマンド（随時更新）
+
+```
+# コマンドリストを表示
+/atago commands
+
+# デプロイ可能なものをリストとして表示
+/atago deploy deploylist 
+
+# stg環境のマイクロサービスのデプロイ
+/atago deploy stg <マイクロサービス名> 
+
+# デプロイ可能なものを全部stg環境にデプロイ
+/atago deploy stg all
+
+# prod環境のマイクロサービスのデプロイ
+/atago deploy prod <マイクロサービス名>
+
+# デプロイ可能なものを全部stg環境にデプロイ
+/atago deploy prod all
+
+# 現在のatagoのジョブを表示
+/atago queue_size
+
+# 対象のクラスターを変更する
+/atago cluster
+
+# クラスタ情報を表示
+/atago cluster_conf
+
+# kubectlを実行
+/atago k8s <kubectlコマンド>
+# 例：「/atago k8s get pods」で対象クラスタのpod状況を確認
+
+# (Not working)
+/atago mssql
+    *mssql* -> Not working
+
+# (Not working)
+/atago clone_app
+
+```
+
+>adminToolがまだatago経由でデプロイできない。

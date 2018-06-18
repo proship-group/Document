@@ -236,7 +236,6 @@ $ ./do.sh deploy_microservice
 podの起動が少し時間がかかるので、3分ほどお待ちください
 
 ```
-
 $ kubectl get pods -l component=microservice,role=configctl
 # 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
 ```

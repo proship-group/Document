@@ -5,23 +5,13 @@
 - ローカル環境にGoogle Cloud SDKとkubectlが導入済み
 
 ## 手順
-### 事前準備
-- [各種サービス設定](prepare_services.md)
 
+### 環境の廃棄化処理
+- [環境の廃棄処理](Linkerマイクロサービスの廃棄化処理.md)
 
-### GKEクラスタの作成
-- [GKEクラスタのセットアップ](setup_gke_cluster.md)
+### 前期準備の準備
 
-### Service Accounts
-- [Create a GCP Service Account](create_service_account.md)
-
-### ソースコードの準備
-- [LINKERソースコードのクローン](prepare_source_code.md)
 - [Setting Environment Variables](prepare_envvars.md)
-
-### Prerequisites
-- [Create GCS Buckets](create_gcs_buckets.md)
-- [Create SSD Storage Class](create_storage_class.md)
 
 ### ミドルウェアのデプロイ
 - [MongoDBのデプロイ](deploy_mongodb.md)
@@ -41,13 +31,17 @@
 - [atagoのセットアップ](setup_atago.md)
 
 ### その他のマイクロサービスのデプロイ
+
+- [adminToolのデプロイ](deploy_adminTool.md)
+
+以下のmicroserviceは、atagoを使ってデプロイしてください。
+
 以下、順不同
 - [notificatorのデプロイ](deploy_notificator.md)
 - [importerのデプロイ](deploy_importer.md)
 - [taskManagerのデプロイ](deploy_taskManager.md)
 - [mailfetcherのデプロイ](deploy_mailfetcher.md)
 - [actionScriptのデプロイ](deploy_actionScript.md)
-- [adminToolのデプロイ](deploy_adminTool.md)
 - [web-uiのデプロイ](deploy_web-ui.md)
 - [b-eee-lpのデプロイ](deploy_b-eee-lp.md)
 - [linker-apiのデプロイ](deploy_linker-api.md)
@@ -55,6 +49,13 @@
 ### ingressのデプロイ
 - [ingressのデプロイ](deploy_ingress.md)
 
-#### Extra Procedures
+#### その他の手順
 
+- [GKEクラスタのセットアップ](setup_gke_cluster.md)
+- [Create a GCP Service Account](create_service_account.md)
+- [Create GCS Buckets](create_gcs_buckets.md)
+- [Create SSD Storage Class](create_storage_class.md)
+- [各種サービス設定](prepare_services.md)
+- [LINKERソースコードのクローン](prepare_source_code.md)
 - [Selecting a Node-Pool](selecting_node-pool.md)
+- [`devops`VMへの接続設定](`devops`VMへの接続設定.md)

@@ -1,6 +1,6 @@
-#環境の廃棄処理
+# 環境の廃棄処理
 
-##事前準備
+## 事前準備
 `devops`VMにアクセスし、`devops`ユーザとしてログイン
 
 ```
@@ -11,9 +11,11 @@ $ sudo su - devops
 
 [環境変数設定](prepare_envvars.md)と`devops`VMのアクセス先（stg環境かprod環境）の設定を行う。
 
+***`devops`VMのアクセス先を間違ったら別環境を壊すことになるため、慎重に確認してください。***
+
 ---
 
-###`devops`VMをstg環境にアクセスする場合
+### `devops`VMをstg環境にアクセスする場合
 下記のコマンドを実行してください。
 
 ```
@@ -27,7 +29,7 @@ kubeconfig entry generated for shared-stg.
 
 ---
 
-###`devops`VMをprod環境にアクセスする場合
+### `devops`VMをprod環境にアクセスする場合
 下記のコマンドを実行してください。
 
 ```
@@ -43,9 +45,9 @@ kubeconfig entry generated for shared-prod.
 
 
 
-##ミドルウェアの廃棄化処理
+## ミドルウェアの廃棄化処理
 
-###MongoDBの廃棄化処理
+### MongoDBの廃棄化処理
 ```
 $ cd ~/go/src/hexalink-k8s/middlewares/mongodb
 
@@ -88,7 +90,7 @@ $ kubectl get configmap
 ```
 
 
-###MySQLの廃棄化処理
+### MySQLの廃棄化処理
 
 ```
 $ cd ~/go/src/hexalink-k8s/middlewares/mysql
@@ -125,7 +127,7 @@ $ kubectl get secret
 
 ```
 
-###Elasticsearchの廃棄化処理
+### Elasticsearchの廃棄化処理
 
 
 ```
@@ -166,7 +168,7 @@ $ kubectl get configmap
 
 ```
 
-###redis廃棄化処理
+### redis廃棄化処理
 ```
 $ cd ~/go/src/hexalink-k8s/middlewares/redis
 
@@ -198,7 +200,7 @@ $ kubectl get secret
 
 ```
 
-###neo4jの廃棄化処理
+### neo4jの廃棄化処理
 
 ```
 $ cd ~/go/src/hexalink-k8s/middlewares/neo4j
@@ -227,7 +229,7 @@ $ kubectl get secret
 
 ```
 
-###NSQの廃棄化処理
+### NSQの廃棄化処理
 
 ```
 $ cd ~/go/src/hexalink-k8s/middlewares/nsq
@@ -293,7 +295,7 @@ $ kubectl get clusterrolebinding
 
 ## Linkerマイクロサービスの廃棄化処理
 
-###configctlの廃棄化処理
+### configctlの廃棄化処理
 
 ```
 $ kubectl get deployment
@@ -306,7 +308,7 @@ $ kubectl get po
 #実行結果に対して「NAME」に「configctl」が付いているものがなければ良い。あれば「$ kubectl delete po <pod名>」で削除してください。
 ```
 
-###apicoreの廃棄化処理
+### apicoreの廃棄化処理
 ```
 $ kubectl get deployment
 #実行結果に対して「NAME」に「apicore」が付いているものがなければ良い。あれば「$ kubectl delete deploy <deployment名>」で削除してください。
