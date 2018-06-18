@@ -59,7 +59,7 @@ $ vi <ファイル名>
 
 #### apikv.yml
 
-**`sentry_dsn`** アイテムに関して、そのvalueは`web-ui` microserviceに使われる。そのvalueはエンドユーザに公開するため、**`Public DSN`**に設定してください。
+**`sentry_dsn`** アイテムに関して、そのvalueは`web-ui` microserviceに使われる。そのvalueはエンドユーザに公開するため、**`Public DSN`** に設定してください。
 
 apikv.ymlに下記の情報がなければ、追記してください。
 

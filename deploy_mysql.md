@@ -42,7 +42,7 @@ $ cd ~/go/src/hexalink-k8s/middlewares/mysql
 パスワードの修正は手動修正と自動修正二つの方法がある。
 
 ---
-####手動修正：
+#### 手動修正：
 
 パスワードを下記のコマンドでファイルを開き、その内容を修正することで手動修正する。 
 
@@ -58,7 +58,7 @@ $ vi secrets/repl.password  # password for the `replication` user
 
 ```
 ---
-####自動修正
+#### 自動修正
 
 下記のコマンドでパスワードを自動修正する
 
@@ -78,7 +78,7 @@ Created secrets/root.password
 Created secrets/repl.password
 ```
 
-#####補足：
+##### 補足：
 
 `$ ./do.sh create_new_passwords`実行時に
 `Password files exist. Please move them first.`を表示すれば、下記のコマンドでファイル内容を確認する。

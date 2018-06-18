@@ -104,7 +104,7 @@ $ kubectl get pods -l component=mongodb,role=mongos
 
 ```
 
-###`devops` パスワードを設定
+### `devops` パスワードを設定
 
 ```bash
 $ ./do.sh change_password [設定したいパスワード, [パスワード保存先のファイル]]

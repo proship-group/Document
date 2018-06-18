@@ -9,7 +9,7 @@
 ### 環境の廃棄化処理
 - [環境の廃棄処理](Linkerマイクロサービスの廃棄化処理.md)
 
-### 前期準備の準備
+### 前期準備
 
 - [Setting Environment Variables](prepare_envvars.md)
 

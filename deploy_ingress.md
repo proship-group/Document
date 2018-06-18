@@ -74,8 +74,10 @@ $ kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-
 $ kubectl create -f configmaps/
 ```
 
-###SSL作成
-####DNS設定変更
+### SSL作成
+
+#### DNS設定変更
+
 1. `GCPコンソール`-`pit-shared-prod`プロジェクト-`Compute Engine`-`VMインスタンス`で、`devops`の***外部IP***をメモする。
 * [freenom](https://my.freenom.com)にアクセスする。ユーザ名とアカウントを入力しログインする。
 * `Service`-`My Domains`をクリックする。
@@ -164,7 +166,7 @@ $ ./do.sh deploy ingress.yml
 
 ### Create the GCE LoadBalancer
 
-**`LOADBALANCER_IP`が正しく設定することを確認してから実行してください。 **
+**`LOADBALANCER_IP`が正しく設定することを確認してから実行してください。**
 
 **LoadBalancerをデプロイする**
 
@@ -174,7 +176,7 @@ GCE LoadBalancer を作成する
 $ ./do.sh deploy loadbalancer.yml
 ```
 
-##DNS設定戻す
+## DNS設定戻す
 
 1. 「$ kubectl get svc -l role=loadbalancer」を実行し、出力した`EXTERNAL-IP`をメモする。
 * [freenom](https://my.freenom.com)にアクセスする。ユーザ名とアカウントを入力しログインする。

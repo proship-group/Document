@@ -56,14 +56,14 @@ INQUIRY_EMAIL=
 
 #### Service Account Key
 
-#####バックアップ取得
+##### バックアップ取得
 
 ```
 $ cp gcp/secrets/gcp-service-account-${ENVIRONMENT}.json gcp/secrets/gcp-service-account-${ENVIRONMENT}.json.bk.`date "+%Y%m%d_%I%M%S"`
 # 「No such file or directory」が表示しても無視してください。
 ```
 
-#####サービスアカウントキーの作成
+##### サービスアカウントキーの作成
 [Elasticsearch](deploy_elasticsearch.md)のデプロイ手順で サービスアカウントキーがすでに取得したため、それを`gcp/secrets/`ディレクトリにコピーする。下記のコマンドを実行してください。
 
 ```bash
