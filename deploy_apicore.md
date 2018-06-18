@@ -2,7 +2,7 @@
 
 ## 概要
 
-#### ファイル構成
+#### hexalink-k8sのファイル構成
 
 ```bash
 ~/go/src/hexalink-k8s/microservices/apicore
@@ -28,6 +28,13 @@ $ cd ~/go/src/apicore
 
 ### Configurationファイル作成
 
+バックアップ取得
+
+```
+$ cp config.env config.env.bk.`date "+%Y%m%d_%I%M%S"`
+# 「No such file or directory」が表示しても無視してください。
+
+```
 templateファイル`.example`をコピーし開く。
 
 ```bash
@@ -35,7 +42,7 @@ $ cp config.env.example config.env
 $ vi config.env
 ```
 
-基本的には下記の設定を行う：
+下記の設定を行う：
 
 ```bash
 # Emails template ID
@@ -45,14 +52,22 @@ FORGOT_EMAIL=
 INQUIRY_EMAIL=
 ```
 
-template IDは[Sendgrid Transactional Templates](https://sendgrid.com/templates)で確認してください。
+各template IDは[Sendgrid Transactional Templates](https://sendgrid.com/templates)で確認してください。
 
 #### Service Account Key
 
-`roles/storage.admin`roleのサービスアカウントをお持ちの場合、それを`gcp/secrets/`にコピーしてください。そのアカウントはない場合、[Create a GCP Service Account](create_service_account.md) を参照し作成してください。
+#####バックアップ取得
+
+```
+$ cp gcp/secrets/gcp-service-account-${ENVIRONMENT}.json gcp/secrets/gcp-service-account-${ENVIRONMENT}.json.bk.`date "+%Y%m%d_%I%M%S"`
+# 「No such file or directory」が表示しても無視してください。
+```
+
+#####サービスアカウントキーの作成
+[Elasticsearch](deploy_elasticsearch.md)のデプロイ手順で サービスアカウントキーがすでに取得したため、それを`gcp/secrets/`ディレクトリにコピーする。下記のコマンドを実行してください。
 
 ```bash
-$ cp $SERVICE_ACCOUNT_KEYFILE gcp/secrets/gcp-service-account-${ENVIRONMENT}.json
+$ cp ~/go/src/hexalink-k8s/middlewares/elasticsearch/secrets/${ENVIRONMENT}/service-account.json gcp/secrets/gcp-service-account-${ENVIRONMENT}.json
 ```
 
 > （翻訳保留中）If you need to change the filename of the `.json` service account key file, you need to also update the `env` variable filename in `K8s Deployment` for `apicore`. The `env` variable name is `GCP_KEYFILE_NAME`
@@ -93,7 +108,10 @@ $ ./do.sh deploy_microservice
 このコマンドを実行するとデプロイ・リソースのYAMLファイルが表示される。デプロイ・リソースが正しいかどうかをそれで確認できる。
 
 #### Pod確認
+podの起動が少し時間がかかるので、3分ほどお待ちください
 
 ```bash
 $ kubectl get pods -l component=microservice,role=apicore
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
+
 ```

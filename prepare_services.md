@@ -65,6 +65,7 @@ LINKERからの各種メール送付に使用。
 atagoからGitHubへのアクセスに使用する。
 ### キーペアの生成
 キーペアをローカルで生成する
+
 ```
 # GitHub用のキーペア生成（passphraseは無しとする）
 $ ssh-keygen -f ~/.ssh/github_rsa -t rsa -b 4096 -C "<Your mail addresse>"
@@ -91,6 +92,7 @@ $ cat ~/.ssh/github_rsa.pub
    - Key -> 上記でコピーした公開鍵をペーストする
 
 ### 接続確認
+
 ```
 $ ssh -T github.com
 ```

@@ -114,18 +114,25 @@ $ kubectl create -f es-data-svc.yaml
 $ kubectl create -f es-data-stateful.yaml
 ```
 
-下記のコマンドでcomponentを確認する
+下記のコマンドでcomponentを確認する。podの起動が少し時間がかかるので、3分ほどお待ちください。
 
 ```bash
 # all components
 $ kubectl get pods -l component=elasticsearch
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
 
 # client components
 $ kubectl get pods -l component=elasticsearch,role=client
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
+
 # master components
 $ kubectl get pods -l component=elasticsearch,role=master
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
+
 # data components
 $ kubectl get pods -l component=elasticsearch,role=data
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
+
 ```
 
 ## Post セットアップ

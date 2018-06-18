@@ -5,7 +5,7 @@
 #### ファイル構成
 
 ```bash
-~/go/src/k8s-deployments/microservices/adminTool
+~/go/src/hexalink-k8s/microservices/adminTool
 ├── do.sh -> ../../do.sh
 ├── prod.yaml
 └── stg.yaml
@@ -21,7 +21,7 @@
 appのdirectoryに移動 
 
 ```bash
-$ cd ~/go/src/admintool
+$ cd ~/go/src/adminTool
 ```
 
 ### Configurationファイル作成
@@ -33,11 +33,18 @@ $ cd ~/go/src/admintool
 
 `adminTool`をビルドする前に、.NETのインストール状況の確認が必要。まだインストールしていない場合、[Get started with .NET in 10 minutes](https://www.microsoft.com/net/learn/get-started/linuxubuntu)を参照してください。インストールした後に、imageをビルドする。
 
+```
+# .NETのインストール状況確認
+$ dotnet --version
+# バージョン情報を表示すれば、 dotnetがインストール済み。「No command」メッセージが表示すれば、.NETをインストールしてください。
+```
+
 下記のコマンドを実行し`adminTool ` microserviceのimageをビルドする。
 
 ```bash
 $ dotnet restore
-$ sudo npm -g install webpack
+$ sudo npm -g install webpack@3.11
+$ sed -i -e 's/-g webpack/-g webpack@3.11/g' Dockerfile
 $ npm install
 $ ./do.sh init
 $ docker build --no-cache -t gcr.io/${PROJECT_ID}/beee-admintool:latest .
@@ -51,7 +58,7 @@ $ gcloud docker -- push gcr.io/${PROJECT_ID}/beee-admintool:latest
 Go to deployments directory
 
 ```bash
-$ cd ~/go/src/k8s-deployments/microservices/adminTool
+$ cd ~/go/src/hexalink-k8s/microservices/adminTool
 ```
 
 ### Node-Poolを選択
@@ -72,6 +79,10 @@ $ ./do.sh deploy_microservice
 
 #### Pod確認
 
+podの起動が少し時間がかかるので、3分ほどお待ちください
+
 ```bash
 $ kubectl get pods -l component=microservice,role=admintool
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
+
 ```

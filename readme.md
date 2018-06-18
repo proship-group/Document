@@ -8,8 +8,6 @@
 ### 事前準備
 - [各種サービス設定](prepare_services.md)
 
-### atagoのセットアップ
-- [atagoのセットアップ](setup_atago.md)
 
 ### GKEクラスタの作成
 - [GKEクラスタのセットアップ](setup_gke_cluster.md)
@@ -38,6 +36,9 @@
 
 ### apicoreのデプロイ
 - [apicoreのデプロイ](deploy_apicore.md)
+
+### atagoのセットアップ
+- [atagoのセットアップ](setup_atago.md)
 
 ### その他のマイクロサービスのデプロイ
 以下、順不同

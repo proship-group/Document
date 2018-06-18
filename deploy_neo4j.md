@@ -46,10 +46,12 @@ $ cd ~/go/src/hexalink-k8s/middlewares/neo4j
 $ kubectl create -f neo4j.yaml
 ```
 
-下記のコマンドでコンポーネントを確認する
+下記のコマンドでコンポーネントを確認する。podの起動が少し時間がかかりますので、3分ほどお待ちください。
 
 ```
 $ kubectl get pods -l component=neo4j
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
+
 ```
 neo4jのPodのstatus が`running`になってから次のステップに進んでください。statusが`pending`であれば、`$ kubectl describe po <neo4jのpod名>`を実行し、`Events`部分を確認しpending問題を解決してください。
 

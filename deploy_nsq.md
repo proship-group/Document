@@ -38,3 +38,9 @@ $ cd ~/go/src/hexalink-k8s/middlewares/nsq
 ```bash
 $ kubectl create -f nsq.yaml
 ```
+下記のコマンドでcomponentを確認する。podの起動が少し時間がかかるので、3分ほどお待ちください。
+
+```
+$ kubectl get pods -l  component=nsq
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
+```

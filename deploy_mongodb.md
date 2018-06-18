@@ -84,17 +84,24 @@ sharded serverに全て必要なkubernetes resourcesを作成する
 $ ./do.sh deploy --all-yaml
 ```
 
-下記のコマンドでcompoentをチェックする
+下記のコマンドでcompoentをチェックする。podの起動が少し時間がかかるので、3分ほどお待ちください
 
 ```bash
 $ kubectl get pods -l component=mongodb
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
 
 # shard components
 $ kubectl get pods -l component=mongodb,role=mongoshard
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
+
 # config server components
 $ kubectl get pods -l component=mongodb,role=mongoshard-cfgsvr
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
+
 # mongos components
 $ kubectl get pods -l component=mongodb,role=mongos
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
+
 ```
 
 ###`devops` パスワードを設定
@@ -102,13 +109,43 @@ $ kubectl get pods -l component=mongodb,role=mongos
 ```bash
 $ ./do.sh change_password [設定したいパスワード, [パスワード保存先のファイル]]
 ```
+`設定したいパスワード` に何も入力しなければ、このコマンドは自動的にランダムのパスワードを生成してくれる。
 これで`${ENVIRONMENT}_password.txt`フォーマットのファイルがカレントディレクトリに作成される。その中に新しいパスワードが書いてある。必要な場合、そのファイルを切り取りしてください。
 
 
 ### Sharding設定
 
-下記のコマンドを実行してください。
+下記のコマンドは必ずPod起動後に実行してください。
 
 ```bash
 $ ./do.sh init [パスワード保存先のファイル]
+```
+
+### MongDB稼働状況確認
+
+```
+# 1
+$ cat ${ENVIRONMENT}_password.txt
+
+# 2
+$ kubectl get pods -l component=mongodb,role=mongos
+
+# 3
+$ kubectl exec -it <「# 2」で取得したいずれかのpod名>
+# 「Welcome to the MongoDB shell.」を表示すれば「#4」に進めてください。表示しなければMongoDBとの接続に問題がある。手順を見直してください。
+
+# 4
+$ use admin
+
+# 5
+$ db.auth("devops","<「# 1」で取得した内容をここに入力>"
+# 「Error: Authentication failed.」を表示すればMongDBの認証状況が正しくない。手順を見直してください。「1」を表示すれば「# 6」に進めてください。
+
+# 6
+$ sh.status()
+# (確認すべき内容は要確認)
+
+# 7
+$ exit
+
 ```

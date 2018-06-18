@@ -23,7 +23,7 @@ redis
 deployments directoryに移動する
 
 ```bash
-$ cd ~/go/src/k8s-deployments/middlewares/redis
+$ cd ~/go/src/hexalink-k8s/middlewares/redis
 ```
 
 ### Password作成
@@ -73,4 +73,11 @@ redisサーバーをデプロイする
 
 ```bash
 $ kubectl create -f redis-single.yaml
+```
+
+下記のコマンドでcomponentを確認する。podの起動が少し時間がかかりますので、3分ほどお待ちください。
+
+```bash
+$ kubectl get pods -l  component=redis
+# 全podのSTATUS列が「running」で、READY列に分母と分子が一致していることを確認
 ```
